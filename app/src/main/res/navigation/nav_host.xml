@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_host"
+    app:startDestination="@id/quizBeginScreen">
+
+    <fragment
+        android:id="@+id/quizBeginScreen"
+        android:name="com.tcoding.quizapp.ui.fragments.QuizBeginScreen"
+        android:label="fragment_quiz_begin_screen"
+        tools:layout="@layout/fragment_quiz_begin_screen" >
+        <action
+            android:id="@+id/action_quizBeginScreen_to_questionFragment"
+            app:destination="@id/questionFragment"
+            app:popUpTo="@id/nav_host" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionFragment"
+        android:name="com.tcoding.quizapp.ui.fragments.QuestionFragment"
+        android:label="fragment_question"
+        tools:layout="@layout/fragment_question" />
+</navigation>
