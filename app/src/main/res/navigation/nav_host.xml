@@ -19,5 +19,15 @@
         android:id="@+id/questionFragment"
         android:name="com.tcoding.quizapp.ui.fragments.QuestionFragment"
         android:label="fragment_question"
-        tools:layout="@layout/fragment_question" />
+        tools:layout="@layout/fragment_question" >
+        <action
+            android:id="@+id/action_questionFragment_to_scoreFragment"
+            app:destination="@id/scoreFragment"
+            app:popUpTo="@id/nav_host" />
+    </fragment>
+    <fragment
+        android:id="@+id/scoreFragment"
+        android:name="com.tcoding.quizapp.ScoreFragment"
+        android:label="fragment_score"
+        tools:layout="@layout/fragment_score" />
 </navigation>

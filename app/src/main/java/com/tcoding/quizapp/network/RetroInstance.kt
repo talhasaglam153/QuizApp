@@ -17,6 +17,11 @@ class RetroInstance {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }
+        fun correctAnswer(): Int
+        {
+            val random = (1..4).random()
+            return random
+        }
 
     }
 

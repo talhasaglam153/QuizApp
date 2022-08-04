@@ -21,6 +21,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <TextView
+                android:id="@+id/tvScore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Score:"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textAllCaps="true"
+                android:layout_gravity="center"
+                android:gravity="center"/>
+
         </LinearLayout>
 
         <TextView
@@ -34,7 +45,6 @@
             android:textColor="@color/teal_700"
             android:paddingHorizontal="8dp"
             android:layout_weight="1"
-            android:text="2/10"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
             app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
             app:layout_constraintStart_toStartOf="@+id/linearLayout2"
@@ -76,6 +86,9 @@
 
             <TextView
                 android:id="@+id/tvAnswer1"
+                android:textColor="@color/teal_700"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_margin="10dp"
                 android:layout_height="wrap_content"
@@ -84,6 +97,9 @@
 
             <TextView
                 android:id="@+id/tvAnswer2"
+                android:textColor="@color/teal_700"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_margin="10dp"
                 android:layout_height="wrap_content"
@@ -92,6 +108,9 @@
 
             <TextView
                 android:id="@+id/tvAnswer3"
+                android:textColor="@color/teal_700"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_margin="10dp"
                 android:layout_height="wrap_content"
@@ -100,6 +119,9 @@
 
             <TextView
                 android:id="@+id/tvAnswer4"
+                android:textColor="@color/teal_700"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_margin="10dp"
                 android:layout_height="wrap_content"
@@ -107,12 +129,12 @@
                 android:background="@drawable/question_option"/>
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnNextQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="20dp"
                 android:background="@color/teal_700"
                 android:text="Next"
-                android:clickable="false"
                 android:textColor="@color/white"/>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
