@@ -87,7 +87,8 @@ class QuestionFragment : Fragment() {
     }
 
     fun scoreScreen() {
-        findNavController().navigate(R.id.action_questionFragment_to_scoreFragment)
+        val direction = QuestionFragmentDirections.actionQuestionFragmentToScoreFragment(score)
+        findNavController().navigate(direction)
     }
 
 
