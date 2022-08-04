@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_host"
-    app:startDestination="@id/quizBeginScreen">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/quizBeginScreen"
@@ -29,5 +29,19 @@
         android:id="@+id/scoreFragment"
         android:name="com.tcoding.quizapp.ScoreFragment"
         android:label="fragment_score"
-        tools:layout="@layout/fragment_score" />
+        tools:layout="@layout/fragment_score" >
+        <argument
+            android:name="score"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.tcoding.quizapp.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_quizBeginScreen"
+            app:destination="@id/quizBeginScreen"
+            app:popUpTo="@id/nav_host" />
+    </fragment>
 </navigation>

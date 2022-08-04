@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -177,7 +176,6 @@ class QuestionFragment : Fragment() {
 
         binding.tvAnswer1.setOnClickListener {
 
-            Toast.makeText(requireContext(), "${question[i].correctAnswer}", Toast.LENGTH_SHORT).show()
 
             if(question[i].correctAnswer == binding.tvAnswer1.text) {
                 binding.tvAnswer1.background = requireActivity().getDrawable(R.drawable.question_true)
@@ -209,7 +207,6 @@ class QuestionFragment : Fragment() {
     @SuppressLint("ResourceAsColor")
     fun tvAnswer2() {
         binding.tvAnswer2.setOnClickListener {
-            Toast.makeText(requireContext(), "${question[i].correctAnswer}", Toast.LENGTH_SHORT).show()
             if(question[i].correctAnswer == binding.tvAnswer2.text) {
                 binding.tvAnswer2.background = requireActivity().getDrawable(R.drawable.question_true)
                 binding.tvAnswer2.setTextColor(R.color.white)
@@ -239,7 +236,6 @@ class QuestionFragment : Fragment() {
     @SuppressLint("ResourceAsColor")
     fun tvAnswer3() {
         binding.tvAnswer3.setOnClickListener {
-            Toast.makeText(requireContext(), "${question[i].correctAnswer}", Toast.LENGTH_SHORT).show()
             if(question[i].correctAnswer == binding.tvAnswer3.text) {
                 binding.tvAnswer3.background = requireActivity().getDrawable(R.drawable.question_true)
                 binding.tvAnswer3.setTextColor(R.color.white)
@@ -269,7 +265,6 @@ class QuestionFragment : Fragment() {
     @SuppressLint("ResourceAsColor")
     fun tvAnswer4() {
         binding.tvAnswer4.setOnClickListener {
-            Toast.makeText(requireContext(), "${question[i].correctAnswer}", Toast.LENGTH_SHORT).show()
             if(question[i].correctAnswer == binding.tvAnswer4.text) {
                 binding.tvAnswer4.background = requireActivity().getDrawable(R.drawable.question_true)
                 binding.tvAnswer4.setTextColor(R.color.white)
