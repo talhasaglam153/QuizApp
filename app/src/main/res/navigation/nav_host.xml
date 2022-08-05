@@ -13,6 +13,7 @@
         <action
             android:id="@+id/action_quizBeginScreen_to_questionFragment"
             app:destination="@id/questionFragment"
+            app:enterAnim="@android:anim/fade_in"
             app:popUpTo="@id/nav_host" />
     </fragment>
     <fragment
@@ -23,6 +24,7 @@
         <action
             android:id="@+id/action_questionFragment_to_scoreFragment"
             app:destination="@id/scoreFragment"
+            app:enterAnim="@android:anim/fade_in"
             app:popUpTo="@id/nav_host" />
     </fragment>
     <fragment
@@ -33,6 +35,12 @@
         <argument
             android:name="score"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_scoreFragment_to_questionFragment"
+            app:destination="@id/questionFragment"
+            app:enterAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_out"
+            app:popUpTo="@id/nav_host" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
@@ -42,6 +50,7 @@
         <action
             android:id="@+id/action_splashFragment_to_quizBeginScreen"
             app:destination="@id/quizBeginScreen"
+            app:enterAnim="@android:anim/fade_in"
             app:popUpTo="@id/nav_host" />
     </fragment>
 </navigation>
