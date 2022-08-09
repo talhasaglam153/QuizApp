@@ -16,30 +16,41 @@ class QuestionViewModel: ViewModel() {
 
 
     lateinit var questionsLiveData: MutableLiveData<ArrayList<QuizData>>
+    lateinit var dataIsLoad : MutableLiveData<Boolean>
 
     init {
         questionsLiveData = MutableLiveData<ArrayList<QuizData>>()
+        dataIsLoad = MutableLiveData<Boolean>()
+        dataIsLoad.value = false
+    }
+
+    fun getLiveIsLoadData(): MutableLiveData<Boolean> {
+        return dataIsLoad
     }
 
     fun getLiveData(): MutableLiveData<ArrayList<QuizData>> {
         return questionsLiveData
     }
 
-    fun callAPI() {
+    fun callAPI(categories: String, limit: Int) {
 
         GlobalScope.launch(Dispatchers.IO) {
 
             var api = RetroInstance.getRetroInstance().create(RetroService::class.java)
 
-            var response = api.getQuestion(10).awaitResponse()
+            var response = api.getQuestion(categories, limit).awaitResponse()
 
             if(response.isSuccessful) {
+
                 val data = response.body()!!
 
                 withContext(Dispatchers.Main) {
                     questionsLiveData.postValue(data)
+                    dataIsLoad.value = true
                 }
 
+            }else {
+                dataIsLoad.value = false
             }
 
 

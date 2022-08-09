@@ -26,25 +26,28 @@
             app:destination="@id/scoreFragment"
             app:enterAnim="@android:anim/fade_in"
             app:popUpTo="@id/nav_host" />
+        <argument
+            android:name="limit"
+            app:argType="integer" />
+        <argument
+            android:name="categories"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/scoreFragment"
-        android:name="com.tcoding.quizapp.ScoreFragment"
+        android:name="com.tcoding.quizapp.ui.fragments.ScoreFragment"
         android:label="fragment_score"
         tools:layout="@layout/fragment_score" >
         <argument
             android:name="score"
             app:argType="integer" />
         <action
-            android:id="@+id/action_scoreFragment_to_questionFragment"
-            app:destination="@id/questionFragment"
-            app:enterAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/fade_out"
-            app:popUpTo="@id/nav_host" />
+            android:id="@+id/action_scoreFragment_to_quizBeginScreen"
+            app:destination="@id/quizBeginScreen" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.tcoding.quizapp.SplashFragment"
+        android:name="com.tcoding.quizapp.ui.fragments.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action

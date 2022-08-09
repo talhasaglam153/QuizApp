@@ -1,15 +1,19 @@
 package com.tcoding.quizapp.ui.fragments
 
+import android.animation.LayoutTransition
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.TranslateAnimation
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.tcoding.quizapp.R
 import com.tcoding.quizapp.databinding.FragmentQuestionBinding
 import com.tcoding.quizapp.model.Quiz
@@ -26,6 +30,14 @@ class QuestionFragment : Fragment() {
     var score = 0
     lateinit var binding: FragmentQuestionBinding
     lateinit var question: ArrayList<QuizData>
+
+
+   // private val args: QuestionFragmentArgs by navArgs()
+
+  /*  var categories = args.categories
+    var limit = args.limit*/
+
+    private val args: QuestionFragmentArgs by navArgs()
     var i = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +63,7 @@ class QuestionFragment : Fragment() {
 
         binding.btnNextQuestion.setOnClickListener {
 
-            if(i==10) {
+            if(i==question.size) {
                 i=0
                 scoreScreen()
             }else {
@@ -123,6 +135,15 @@ class QuestionFragment : Fragment() {
 
 
 
+        viewModel.getLiveIsLoadData().observe(requireActivity(), Observer {
+            if(it) {
+                binding.progressBar.visibility = View.GONE
+                binding.fragmentQuestionView.visibility = View.VISIBLE
+            }else {
+                binding.progressBar.visibility = View.VISIBLE
+                binding.fragmentQuestionView.visibility = View.GONE
+            }
+        })
         viewModel.getLiveData().observe(requireActivity(), Observer {
             question = it
 
@@ -134,11 +155,11 @@ class QuestionFragment : Fragment() {
 
             binding.tvQuestionNumber.text = "${i+1}/${question.size}"
 
-
-
         })
+        val limit = args.limit
+        val categories = args.categories
 
-        viewModel.callAPI()
+        viewModel.callAPI(categories,limit)
 
 
     }
@@ -183,6 +204,9 @@ class QuestionFragment : Fragment() {
                 binding.tvAnswer1.background = requireActivity().getDrawable(R.drawable.question_true)
                 binding.tvAnswer1.setTextColor(R.color.white)
                 score += 10
+                val animObj = TranslateAnimation(-400.0F,binding.tvScore.width.toFloat(),0.0F,0.0F)
+                animObj.duration = 500
+                binding.tvScore.startAnimation(animObj)
                 binding.tvScore.setText("Score: ${score.toString()}")
             }else if(question[i].correctAnswer == binding.tvAnswer2.text) {
                 binding.tvAnswer2.background = requireActivity().getDrawable(R.drawable.question_true)
@@ -213,6 +237,9 @@ class QuestionFragment : Fragment() {
                 binding.tvAnswer2.background = requireActivity().getDrawable(R.drawable.question_true)
                 binding.tvAnswer2.setTextColor(R.color.white)
                 score += 10
+                val animObj = TranslateAnimation(-400.0F,binding.tvScore.width.toFloat(),0.0F,0.0F)
+                animObj.duration = 500
+                binding.tvScore.startAnimation(animObj)
                 binding.tvScore.setText("Score: ${score.toString()}")
             }else if(question[i].correctAnswer == binding.tvAnswer1.text) {
                 binding.tvAnswer1.background = requireActivity().getDrawable(R.drawable.question_true)
@@ -242,6 +269,9 @@ class QuestionFragment : Fragment() {
                 binding.tvAnswer3.background = requireActivity().getDrawable(R.drawable.question_true)
                 binding.tvAnswer3.setTextColor(R.color.white)
                 score += 10
+                val animObj = TranslateAnimation(-400.0F,binding.tvScore.width.toFloat(),0.0F,0.0F)
+                animObj.duration = 500
+                binding.tvScore.startAnimation(animObj)
                 binding.tvScore.setText("Score: ${score.toString()}")
             }else if(question[i].correctAnswer == binding.tvAnswer2.text) {
                 binding.tvAnswer2.background = requireActivity().getDrawable(R.drawable.question_true)
@@ -268,18 +298,27 @@ class QuestionFragment : Fragment() {
     fun tvAnswer4() {
         binding.tvAnswer4.setOnClickListener {
             if(question[i].correctAnswer == binding.tvAnswer4.text) {
+
                 binding.tvAnswer4.background = requireActivity().getDrawable(R.drawable.question_true)
                 binding.tvAnswer4.setTextColor(R.color.white)
                 score += 10
+                val animObj = TranslateAnimation(-400.0F,binding.tvScore.width.toFloat(),0.0F,0.0F)
+                animObj.duration = 500
+                binding.tvScore.startAnimation(animObj)
                 binding.tvScore.setText("Score: ${score.toString()}")
+
             }else if(question[i].correctAnswer == binding.tvAnswer2.text) {
+
                 binding.tvAnswer2.background = requireActivity().getDrawable(R.drawable.question_true)
                 binding.tvAnswer2.setTextColor(R.color.white)
                 binding.tvAnswer4.background = requireActivity().getDrawable(R.drawable.question_false)
+
             }else if(question[i].correctAnswer == binding.tvAnswer3.text) {
+
                 binding.tvAnswer3.background = requireActivity().getDrawable(R.drawable.question_true)
                 binding.tvAnswer3.setTextColor(R.color.white)
                 binding.tvAnswer4.background = requireActivity().getDrawable(R.drawable.question_false)
+
             }else if(question[i].correctAnswer == binding.tvAnswer1.text) {
                 binding.tvAnswer1.background = requireActivity().getDrawable(R.drawable.question_true)
                 binding.tvAnswer1.setTextColor(R.color.white)

@@ -10,7 +10,9 @@ interface RetroService {
 
 
     @GET("/api/questions")
-    fun getQuestion(@Query("limit") limit: Int): Call<ArrayList<QuizData>>
+    fun getQuestion(
+        @Query("categories") categories:String,
+        @Query("limit") limit: Int): Call<ArrayList<QuizData>>
 
 
 

@@ -1,4 +1,4 @@
-package com.tcoding.quizapp
+package com.tcoding.quizapp.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.tcoding.quizapp.R
 import com.tcoding.quizapp.databinding.FragmentScoreBinding
 
 class ScoreFragment : Fragment() {
@@ -27,19 +28,13 @@ class ScoreFragment : Fragment() {
 
         binding.tvResult.setText(args.score.toString())
 
-
-
         binding.btnPlayAgain.setOnClickListener {
-            findNavController().navigate(R.id.action_scoreFragment_to_questionFragment)
+            findNavController().navigate(R.id.action_scoreFragment_to_quizBeginScreen)
         }
 
         binding.btnQuit.setOnClickListener {
             activity?.onBackPressed()
         }
-
-
         return binding.root
     }
-
-
 }
